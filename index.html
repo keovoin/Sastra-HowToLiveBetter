@@ -65,6 +65,8 @@ html.dark{
   --shadow:0 1px 2px rgba(0,0,0,.3);
   color-scheme:dark;
 }
+html.lang-km body, html.lang-km input{font-family:"Leelawadee UI","Noto Sans Khmer","Khmer OS Muol Light",var(--font)}
+html.lang-km .doc, html.lang-km .card{letter-spacing:0}
 *{box-sizing:border-box}
 html{scroll-padding-top:calc(var(--nav-h) + 16px)}
 body{margin:0;background:var(--bg);color:var(--t1);font:14px/1.7 var(--font);-webkit-font-smoothing:antialiased}
@@ -90,6 +92,10 @@ mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
 .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:18px;height:18px;fill:none;stroke:var(--t3);stroke-width:2;pointer-events:none}
 .search kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);font:500 11px/1 var(--font);color:var(--t3);border:1px solid var(--divider);border-radius:4px;padding:3px 6px;background:var(--bg-elv);pointer-events:none}
 .nav-r{display:flex;align-items:center;gap:8px}
+.langsw{display:flex;border:1px solid var(--divider);border-radius:8px;overflow:hidden;background:var(--bg-elv);flex:none}
+.langsw button{padding:6px 9px;font-size:12px;font-weight:600;color:var(--t3);transition:background .2s,color .2s;line-height:1.4}
+.langsw button:hover{color:var(--t1);background:var(--bg-soft)}
+.langsw button.on{background:var(--brand-soft);color:var(--brand-1)}
 .icon-btn{width:36px;height:36px;border-radius:8px;display:grid;place-items:center;color:var(--t2);transition:background .25s,color .25s}
 .icon-btn:hover{background:var(--bg-soft);color:var(--t1)}
 .icon-btn svg{width:20px;height:20px;fill:currentColor}
@@ -271,6 +277,9 @@ abbr.term:hover{border-bottom-color:var(--brand-1);color:var(--brand-1)}
       <kbd>/</kbd>
     </label>
     <div class="nav-r">
+      <div class="langsw" id="langsw" role="group" aria-label="Language">
+        <button data-lang="zh" class="on">中文</button><button data-lang="en">EN</button><button data-lang="km">ខ្មែរ</button>
+      </div>
       <a class="icon-btn" href="README.md" title="查看 README.md" aria-label="README"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6zm8 1.5V8h4.5zM8 12h8v1.5H8zm0 3.5h8V17H8z"/></svg></a>
       <a class="icon-btn" href="https://github.com/eternity4719/HowToLiveBetter" target="_blank" rel="noopener" title="在 GitHub 上查看源仓库" aria-label="GitHub 仓库"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 5.6 18.3 6 18.3 6c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
       <button class="switch" id="theme" aria-label="切换深色模式" title="切换深色模式"><span class="knob"><svg class="sun" viewBox="0 0 24 24"><path d="M12 4a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V5a1 1 0 0 1 1-1zm0 13a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zm8-6a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2zM5 11a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2zm12.07-5.07a1 1 0 0 1 0 1.41l-.7.71a1 1 0 1 1-1.42-1.41l.71-.71a1 1 0 0 1 1.41 0zM8.05 16.95a1 1 0 0 1 0 1.41l-.7.71a1 1 0 1 1-1.42-1.41l.71-.71a1 1 0 0 1 1.41 0zm9.02 0l.7.71a1 1 0 1 1-1.41 1.41l-.71-.7a1 1 0 0 1 1.42-1.42zM6.34 5.93l.71.71a1 1 0 0 1-1.41 1.41l-.71-.7a1 1 0 0 1 1.41-1.42zM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M12.1 22c-5.5 0-10-4.5-10-10 0-4.8 3.4-8.9 8-9.8.5-.1.9.4.7.9A8 8 0 0 0 20.9 13c.5-.2 1 .2.9.7-.9 4.7-5 8.3-9.7 8.3z"/></svg></span></button>
@@ -423,12 +432,13 @@ function parseReadme(md){
       continue;
     }
     if (entry){
-      if ((m = /^- 成本：(.*)$/.exec(line))) entry.cost = m[1];
-      else if ((m = /^- 说人话：(.*)$/.exec(line))) entry.human = m[1];
-      else if ((m = /^- 收益：(.*)$/.exec(line))) entry.gain = m[1];
-      else if ((m = /^- 证据等级：\s*([ABC])/.exec(line))) entry.grade = m[1];
-      else if ((m = /^- 来源：(.*)$/.exec(line))) entry.src = m[1];
-      else if ((m = /^- 备注：(.*)$/.exec(line))) entry.note = m[1];
+      let mm2;
+      if ((mm2 = /^- (?:成本|Cost)\s*[:：]\s*(.*)$/.exec(line))) entry.cost = mm2[1];
+      else if ((mm2 = /^- (?:说人话|Plain words)\s*[:：]\s*(.*)$/.exec(line))) entry.human = mm2[1];
+      else if ((mm2 = /^- (?:收益|Benefit)\s*[:：]\s*(.*)$/.exec(line))) entry.gain = mm2[1];
+      else if ((mm2 = /^- (?:证据等级|Evidence)\s*[:：]\s*([ABC])/.exec(line))) entry.grade = mm2[1];
+      else if ((mm2 = /^- (?:来源|Source)\s*[:：]\s*(.*)$/.exec(line))) entry.src = mm2[1];
+      else if ((mm2 = /^- (?:备注|Note)\s*[:：]\s*(.*)$/.exec(line))) entry.note = mm2[1];
       continue;
     }
     if (line) sec.intro.push(line);   // 第一条之前的每一段导读都收，不止第一段
@@ -759,15 +769,168 @@ function wire(){
   });
 }
 
+/* ---------- i18n ---------- */
+const I18N_BUILTIN = {
+  en: {
+    title: "How to Live Better — a cost-benefit guide", tagline: "Spend the least money, time and effort; get back the most life, money and freedom.",
+    subtitle: "Every entry answers two questions: what it costs, what it returns.",
+    search: "Search entries", all_sections: "All chapters", chapters: "Chapters",
+    value_for_money: "Value", vf_note: "author's judgment; comparable within one lens",
+    benefit_lens: "What you get back", evidence: "Evidence", evidence_note: "meta/RCT · studied · consensus",
+    spend: "Money", spend_time: "Time", willpower: "Willpower",
+    only_dispute: "Disputed only", only_todo: "Unverified only", reset: "Clear filters",
+    hint1: "One chapter at a time; filters within a group are OR, across groups are AND.",
+    hint2: "Within a chapter entries are sorted by value; search never reorders.",
+    hint3: "Text and tags come from the 32 files under book/ — edit there, it shows here.",
+    cost: "Cost", gain: "Benefit", note: "Note", source: "Source",
+    shown: "Showing", of_total: "of", unit: "entries",
+    value_badge: "Value", evidence_badge: "Evidence", grade_unit: "",
+    disputed: "Disputed", unverified: "Unverified",
+    lens_life: "life", lens_money: "money", lens_time: "time & energy", lens_freedom: "freedom",
+    cost_none: "free", cost_low: "a little money", cost_high: "a lot of money",
+    t_quiet: "quick", t_hours: "a few hours", t_daily: "daily time",
+    w_no: "no willpower", w_some: "some willpower", w_much: "a lot of willpower",
+    ratio_v: ["high", "medium", "low"],
+    perma: "link", gloss_title: "Terms & abbreviations",
+    gloss_hint: "Dashed words in the text are explained on click or hover. Full list below.",
+    empty: "No matching entries. Remove one filter, or try a shorter keyword.",
+    loading: "Loading text …", long_posts: "Long reads", ad: "Ads",
+    doc_foot: "Numbers follow each entry's lens: different chapters use different lenses (mortality, energy/time, money, freedom) — never compared across. Verification trail: docs/. Unlicense, public domain.",
+    noscript: "Filtering needs JavaScript. The text is readable directly: table of contents in README.md, content in book/.",
+    anchor_note: "Machine tags (成本标签) stay verbatim so filters keep working; citations are untranslated by design.",
+  },
+  km: {}
+};
+let UI = {};            // active string table
+let LANG = localStorage.getItem('lang') || 'zh';
+let STR_BUNDLE = null;  // tools/ui_i18n.json once fetched
+function t(k){ return UI[k] || I18N_ZH[k] || k; }
+const I18N_ZH = {
+  title: "高性价比人生指南", tagline: "用最少的钱、时间和精力，换回最多的寿命、金钱和人身自由",
+  subtitle: "每一条都回答两个问题：花掉什么，换回什么。",
+  search: "搜索条目", all_sections: "全部章节", chapters: "章节",
+  value_for_money: "性价比", vf_note: "作者判断，同口径内可比",
+  benefit_lens: "换回的口径", evidence: "证据等级", evidence_note: "荟萃/RCT · 有研究 · 共识",
+  spend: "花钱", spend_time: "花时间", willpower: "要毅力",
+  only_dispute: "只看标了争议的", only_todo: "只看有待核实的", reset: "清空筛选",
+  hint1: "章节一次只看一个，成本和等级可多选。同一组多选是「或」，不同组之间是「且」。",
+  hint2: "每节内按性价比从高到低排，检索不改变顺序。",
+  hint3: "正文与标签来自仓库 book/ 下的 32 个文件，改正文即改这里。",
+  cost: "成本", gain: "收益", note: "备注", source: "来源",
+  shown: "当前显示", of_total: "条，共", unit: "条",
+  value_badge: "性价比", evidence_badge: "证据", grade_unit: "级",
+  disputed: "争议", unverified: "含待核实",
+  lens_life: "换寿命", lens_money: "换钱", lens_time: "换时间精力", lens_freedom: "换人身自由",
+  cost_none: "不花钱", cost_low: "花少量钱", cost_high: "花不少钱",
+  t_quiet: "顺手", t_hours: "花几小时", t_daily: "每天占时间",
+  w_no: "不用毅力", w_some: "要一点毅力", w_much: "要很多毅力",
+  ratio_v: ["极高", "高", "一般"],
+  perma: "本条链接", gloss_title: "看不懂的缩写和名词",
+  gloss_hint: "正文里带虚线的词，点一下或把鼠标放上去就有解释。全表如下。",
+  empty: "没有匹配的条目。去掉一个筛选条件，或换个更短的关键词。",
+  loading: "正在读取正文 …", long_posts: "长文", ad: "广告",
+  doc_foot: "数字口径以条目内标注为准：不同节使用不同口径（死亡率、精力/时间、金钱、人身自由），互不换算。来源核实过程见 docs/核实记录。Unlicense，公有领域。",
+  noscript: "本页的筛选功能需要 JavaScript。正文可直接阅读：README.md 里的目录，正文在 book/。",
+};
+const LENS_LABEL_X = { '死亡率': () => t('lens_life'), '金钱': () => t('lens_money'), '时间': () => t('lens_time'), '自由': () => t('lens_freedom') };
+const LABEL_X = { money: { '0': () => t('cost_none'), '少': () => t('cost_low'), '多': () => t('cost_high') },
+                  time: { '少': () => t('t_quiet'), '中': () => t('t_hours'), '多': () => t('t_daily') },
+                  will: { '否': () => t('w_no'), '些': () => t('w_some'), '是': () => t('w_much') } };
+const RANK_X = { '极高': 3, '高': 2, '一般': 1 };
+async function setLang(lang){
+  if (lang !== 'zh'){
+    try { STR_BUNDLE = STR_BUNDLE || await (await fetch('tools/ui_i18n.json', {cache:'no-cache'})).json(); } catch(e){ STR_BUNDLE = {}; }
+  }
+  LANG = lang; try { localStorage.setItem('lang', lang); } catch(e){}
+  document.documentElement.lang = lang === 'km' ? 'km' : (lang === 'en' ? 'en' : 'zh-CN');
+  document.documentElement.classList.toggle('lang-km', lang === 'km');
+  UI = lang === 'zh' ? {} : { ...(I18N_BUILTIN[lang] || {}), ...((STR_BUNDLE && STR_BUNDLE[lang]) || {}) };
+  applyChrome(); applyBadges();
+}
+// switcher buttons: persist choice, swap chrome instantly, reload the book from disk
+(function wireLangSwitch(){
+  const sw = document.getElementById('langsw'); if (!sw) return;
+  const mark = () => sw.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.lang === LANG));
+  sw.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const lang = b.dataset.lang; if (lang === LANG) return;
+    try { localStorage.setItem('lang', lang); } catch(err){}
+    location.reload();
+  });
+  document.addEventListener('DOMContentLoaded', mark);
+  mark();
+})();
+function applyChrome(){
+  const q = (id) => document.getElementById(id);
+  document.title = t('title') + " · " + t('tagline');
+  document.querySelector('.title span:last-child').textContent = t('title');
+  q('q').placeholder = t('search'); q('q').setAttribute('aria-label', t('search'));
+  const sec = document.querySelector('#f-sec');
+  const allB = sec && sec.querySelector('.all'); if (allB) allB.querySelector('span').textContent = t('all_sections');
+  const gts = document.querySelectorAll('.sidebar .gt');
+  const gtMap = [t('chapters'), t('value_for_money'), t('benefit_lens'), t('evidence'), t('spend'), t('spend_time'), t('willpower')];
+  gts.forEach((g, i) => { if (gtMap[i] !== undefined) g.childNodes[0].nodeValue = gtMap[i] + ' '; });
+  const vfSmall = document.querySelector('.sidebar .gt small'); if (vfSmall) vfSmall.textContent = t('vf_note');
+  const evSmall = document.querySelectorAll('.sidebar .gt small')[1]; if (evSmall) evSmall.textContent = t('evidence_note');
+  const chipV = {}; document.querySelectorAll('.chip').forEach(c => { chipV[c.dataset.v] = true; });
+  document.querySelectorAll('.chips[data-dim="lens"] .chip').forEach(c => { c.textContent = LENS_LABEL_X[c.dataset.v] ? LENS_LABEL_X[c.dataset.v]() : c.dataset.v; });
+  document.querySelectorAll('.chips[data-dim="money"] .chip').forEach(c => { c.textContent = { '0': t('cost_none'), '少': t('cost_low'), '多': t('cost_high')}[c.dataset.v] || c.dataset.v; });
+  document.querySelectorAll('.chips[data-dim="time"] .chip').forEach(c => { c.textContent = { '少': t('t_quiet'), '中': t('t_hours'), '多': t('t_daily')}[c.dataset.v] || c.dataset.v; });
+  document.querySelectorAll('.chips[data-dim="will"] .chip').forEach(c => { c.textContent = { '否': t('w_no'), '些': t('w_some'), '是': t('w_much')}[c.dataset.v] || c.dataset.v; });
+  document.querySelectorAll('.chips[data-dim="ratio"] .chip').forEach(c => { const idx = { '极高':0,'高':1,'一般':2 }[c.dataset.v]; if (idx !== undefined && (I18N_BUILTIN[LANG] || {}).ratio_v) c.textContent = (UI.ratio_v || I18N_ZH.ratio_v)[idx]; });
+  const tgl = document.querySelectorAll('.toggle');
+  if (tgl[0]) tgl[0].lastChild.textContent = ' ' + t('only_dispute');
+  if (tgl[1]) tgl[1].lastChild.textContent = ' ' + t('only_todo');
+  const rb = q('reset'); if (rb) rb.textContent = t('reset');
+  const rb2 = q('reset2'); if (rb2) rb2.textContent = t('reset');
+  const hints = document.querySelectorAll('.hint p');
+  if (hints[0]) hints[0].textContent = t('hint1'); if (hints[1]) hints[1].textContent = t('hint2');
+  document.querySelector('.doc h1').textContent = t('title');
+  const subs = document.querySelectorAll('.doc-head p');
+  if (subs[0]) subs[0].textContent = t('subtitle');
+  const stat = document.querySelector('.stat');
+  if (stat) stat.innerHTML = `${esc(t('shown'))} <b id="cnt">${(document.getElementById('cnt')||{}).textContent || '–'}</b> ${esc(t('of_total'))} <span id="tot">${(document.getElementById('tot')||{}).textContent || '–'}</span> ${esc(t('unit'))}`;
+  const gloss = q('gloss'); if (gloss) gloss.querySelector('summary').textContent = t('gloss_title');
+  const glossP = gloss && gloss.querySelector('p'); if (glossP) glossP.textContent = t('gloss_hint');
+  const empty = q('empty'); if (empty) empty.childNodes[0].nodeValue = '\n        ' + t('empty') + '\n        ';
+  const adGt = document.querySelector('.ad .gt'); if (adGt) adGt.textContent = t('ad');
+  const foot = document.querySelector('.foot'); if (foot) foot.innerHTML = esc(t('doc_foot')).replace(/docs\//, '<a href="https://github.com/eternity4719/HowToLiveBetter/tree/main/docs/%E6%A0%B8%E5%AE%9E%E8%AE%B0%E5%BD%95">docs/</a>');
+}
+function applyBadges(){
+  if (!CARDS.length) return;
+  const RT = { 'zh': { '极高':'极高','高':'高','一般':'一般' }, 'en': { '极高':'high','高':'medium','一般':'low' } };
+  for (const card of CARDS){
+    const e = card.e, badges = card.el.querySelector('.badges');
+    badges.innerHTML = '';
+    if (e.ratio) { const tr_ = document.createElement('span'); tr_.className = 'badge r' + ({'极高':'3','高':'2','一般':'1'}[e.ratio] || '1');
+      const label = (LANG === 'zh' ? e.ratio : (RT.en[e.ratio] || e.ratio));
+      tr_.textContent = t('value_badge') + ' ' + label;
+      tr_.title = (LANG === 'zh' ? '作者判断：由收益量级（' + e.level + '）和三项成本合成，只在同一口径（' + (LENS_LABEL[e.lens]||'') + '）内可比，与证据等级无关' : 'Author judgment: gain size + three costs; comparable only within one lens; unrelated to evidence grade');
+      badges.appendChild(tr_); }
+    const add = (cls, text) => { const tt = document.createElement('span'); tt.className = 'badge ' + cls; tt.textContent = text; badges.appendChild(tt); };
+    add(e.grade, (LANG === 'zh' ? '证据 ' + e.grade + ' 级' : 'Evidence ' + e.grade));
+    if (e.lens) add('plain', LENS_LABEL_X[e.lens] ? LENS_LABEL_X[e.lens]() : e.lens);
+    for (const d of ['money','time','will']) if (e[d] && LABEL_X[d] && LABEL_X[d][e[d]]) add('plain', LABEL_X[d][e[d]]());
+    if (e.dispute) add('danger', t('disputed'));
+    if (e.todo) add('warn', t('unverified'));
+  }
+}
+
 /* ---------- 启动 ---------- */
 (async function init(){
   const status = document.getElementById('status');
   try {
     if (location.protocol === 'file:') throw new Error('file');
-    const r = await fetch('README.md', {cache:'no-cache'});
-    if (!r.ok) throw new Error('http '+r.status);
-    const md = await r.text();
-    const files = [...new Set(Array.from(md.matchAll(/\]\((book\/[^)]+\.md)\)/g), m => m[1]))].sort();
+    const zhMd = await (await fetch('README.md', {cache:'no-cache'})).text();
+    // localized README decides WHICH book files load; zh README always feeds the glossary
+    let mdList = zhMd;
+    if (LANG !== 'zh'){
+      try {
+        const lr = await fetch('README.' + LANG + '.md', {cache:'no-cache'});
+        if (lr.ok) mdList = await lr.text(); else LANG = 'zh';
+      } catch(e){ LANG = 'zh'; }
+    }
+    const files = [...new Set(Array.from(mdList.matchAll(/\]\((book(?:\/[a-z]{2})?\/[^)]+\.md)\)/g), m => m[1]))].sort();
     if (!files.length) throw new Error('empty');
     const parts = await Promise.all(files.map(async f => {
       const res = await fetch(f, {cache:'no-cache'});
@@ -777,11 +940,12 @@ function wire(){
     const t1 = performance.now();
     const sections = parseReadme(parts.join('\n\n'));
     if (!sections.length) throw new Error('empty');
-    GLOSS = parseGlossary(md);
+    GLOSS = parseGlossary(zhMd);
     PERF.log('解析正文', t1, files.length + ' 个文件');
     status.remove();
     const t2 = performance.now(); build(sections); PERF.log('建 DOM', t2, CARDS.length + ' 张卡');
     buildGlossary(); readUrl(); wire(); apply();
+    if (LANG !== 'zh') await setLang(LANG);
     PERF.mark(`DOM 节点 ${document.getElementsByTagName('*').length}，术语 ${GLOSS.length}`);
     if (location.hash){
       const target = document.getElementById(location.hash.slice(1));

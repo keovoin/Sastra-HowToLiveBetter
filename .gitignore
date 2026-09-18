@@ -1,2 +1,3 @@
-.idea/
-.junie/
+__pycache__/
+tools/*.log
+tools/i18n_progress.json
